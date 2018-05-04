@@ -10,9 +10,12 @@ using namespace std;
 
 int calcSumOfHand(const vector<int> &hand) {
     int sum = 0;
+    int counta = 0;
     for (auto &card: hand) {
+        if (card % 13 == 0) ++counta;
         sum += min(10, card % 13 + 1);
     }
+    for (int i = 0; i < counta && sum <= 11; ++i) sum += 10;
     return sum;
 }
 
